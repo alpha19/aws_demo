@@ -1,14 +1,14 @@
 name: Deploy to Amazon Amplify
 on:
   push:
-    branches: [ "master" ]
+    branches: [ ]
 
 permissions:
   contents: read
 
 jobs:
   deploy:
-    name: Deploy
+    name: Deploy to Amplify Production
     runs-on: ubuntu-latest
     environment: prod
 
@@ -19,7 +19,4 @@ jobs:
     - name: Invoke deployment hook
       uses: distributhor/workflow-webhook@v3
       env:
-        #webhook_type: 'form-urlencoded'
         webhook_url: ${{ secrets.AMPLIFY_WEBHOOK_URL }}
-        #webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
-        #data: 'weapon=hammer&drink=beer'
